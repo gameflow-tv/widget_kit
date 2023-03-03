@@ -5,13 +5,13 @@
 //  Created by Arne Molland on 01/03/2023.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct ExampleWidgetBundle: WidgetBundle {
-    var body: some Widget {
-        ExampleWidget()
-        ExampleWidgetLiveActivity()
-    }
+  var body: some Widget {
+    ExampleWidget()
+    ExampleWidgetLiveActivity()
+  }
 }
