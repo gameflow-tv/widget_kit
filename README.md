@@ -13,10 +13,6 @@ The only parts of [WidgetKit] that can be accessed through Flutter are the follo
 
 This means that this library is **_not_ for creating widget user interfaces**. This library facilitates some interaction with [WidgetKit] timelines and basic means for passing arbitrary data to the underlying platform via [UserDefaults] and app groups. Retrieving that data and applying it to a Widget UI has to be done on the platform level; this is _not_ possible through Flutter.
 
-[WidgetKit]: https://developer.apple.com/documentation/widgetkit/
-[flutter_widgetkit]: https://github.com/fasky-software/flutter_widgetkit
-[UserDefaults]: https://developer.apple.com/documentation/foundation/userdefaults
-
 ## Usage
 
 ### [UserDefaults]
@@ -42,6 +38,18 @@ void foo() {
 ### [WidgetKit]
 
 ```dart
+// Reload all timelines
 WidgetKit.reloadAllTimelines();
+
+// Reload specific timeline
 WidgetKit.reloadTimelines('foo');
 ```
+
+## Creating a Widget Extension
+
+While this section is lacking written docs, check out [the example app] for a reference implementation.
+
+[WidgetKit]: https://developer.apple.com/documentation/widgetkit/
+[flutter_widgetkit]: https://github.com/fasky-software/flutter_widgetkit
+[UserDefaults]: https://developer.apple.com/documentation/foundation/userdefaults
+[the example app]: example/ios/ExampleWidget/ExampleWidget.swift
