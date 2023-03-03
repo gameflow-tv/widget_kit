@@ -1,0 +1,26 @@
+name: widget_kit
+description: A library for interfacing with a small subset of the WidgetKit API.
+version: 0.0.1
+homepage: https://github.com/gameflow-tv/watch_kit
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+  flutter: ">=2.5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        pluginClass: WidgetKitPlugin
+      macos:
+        pluginClass: WidgetKitPlugin
