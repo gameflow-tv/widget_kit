@@ -1,7 +1,8 @@
 name: widget_kit
 description: A library for interfacing with a small subset of the WidgetKit API.
 version: 0.0.1
-homepage: https://github.com/gameflow-tv/watch_kit
+homepage: https://github.com/gameflow-tv/widget_kit
+repository: https://github.com/gameflow-tv/widget_kit
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
