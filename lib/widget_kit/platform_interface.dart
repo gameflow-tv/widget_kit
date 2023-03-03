@@ -23,10 +23,15 @@ abstract class WidgetKitPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// Reloads the timelines for all configured widgets belonging to the
+  /// containing app.
   Future<void> reloadAllTimelines() async {
     throw UnimplementedError('reloadAllTimelines() has not been implemented.');
   }
 
+  /// Reloads the timelines for all widgets of a particular kind.
+  /// - Parameter [kind]: A string that identifies the widget and matches the
+  ///   value you used when you created the widget's configuration.
   Future<void> reloadTimelines(
     String kind,
   ) async {

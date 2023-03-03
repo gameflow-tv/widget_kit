@@ -1,5 +1,6 @@
 import 'platform_interface.dart';
 
+/// Surface level API for the user defaults plugin.
 class UserDefaults {
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
