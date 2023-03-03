@@ -17,7 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  widget_kit:
+  widget_kit_plugin:
     # When depending on this package from a real application you should use:
     #   widget_kit: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

@@ -20,7 +20,7 @@ This means that this library is **_not_ for creating widget user interfaces**. T
 ### [UserDefaults]
 
 ```dart
-import 'package:widget_kit/widget_kit.dart';
+import 'package:widget_kit_plugin/widget_kit_plugin.dart';
 
 void foo() {
   // Save some data to user preferences.
@@ -40,7 +40,7 @@ void foo() {
 ### [WidgetKit]
 
 ```dart
-import 'package:widget_kit/widget_kit.dart';
+import 'package:widget_kit_plugin/widget_kit_plugin.dart';
 
 void bar() {
   // Reload all timelines

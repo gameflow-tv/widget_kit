@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:widget_kit/user_defaults/method_channel.dart';
+import 'package:widget_kit_plugin/user_defaults/method_channel.dart';
 
 void main() {
   const channel = MethodChannel('user_defaults');

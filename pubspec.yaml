@@ -1,4 +1,4 @@
-name: widget_kit
+name: widget_kit_plugin
 description: A library for interfacing with a small subset of the WidgetKit API.
 version: 0.0.1
 homepage: https://github.com/gameflow-tv/widget_kit
