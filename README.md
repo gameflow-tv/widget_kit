@@ -1,5 +1,7 @@
 # widget_kit
 
+<p align="center"><img src="https://github.com/gameflow-tv/widget_kit/blob/main/assets/widgetkit.png" width="96px" /></p>
+
 A small library for interfacing with the _very_ limited parts of [WidgetKit] that are accessible through platform channels. API based on [flutter_widgetkit]. iOS and macOS only.
 
 ## Introduction
