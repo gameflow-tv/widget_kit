@@ -15,7 +15,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.1.4
 
 dev_dependencies:
   flutter_test:
