@@ -1,40 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:widget_kit_plugin/widget_kit_plugin.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:widget_kit_plugin/api/widget_kit.dart';
+import 'widget_kit_test.mocks.dart';
 
-class MockWidgetKitPlatform
-    with MockPlatformInterfaceMixin
-    implements WidgetKitPlatform {
-  @override
-  Future<void> reloadAllTimelines() async {}
-
-  @override
-  Future<void> reloadTimelines(String kind) async {}
-}
-
+@GenerateMocks([WidgetKitAPI])
 void main() {
-  final WidgetKitPlatform initialPlatform = WidgetKitPlatform.instance;
+  final widgetKit = MockWidgetKitAPI();
 
-  test('$MethodChannelWidgetKit is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelWidgetKit>());
-  });
-
-  test('smoke test', () async {
-    MockWidgetKitPlatform fakePlatform = MockWidgetKitPlatform();
-    WidgetKitPlatform.instance = fakePlatform;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   test('reloadAllTimelines', () async {
-    MockWidgetKitPlatform fakePlatform = MockWidgetKitPlatform();
-    WidgetKitPlatform.instance = fakePlatform;
-
-    await WidgetKit.reloadAllTimelines();
+    when(widgetKit.reloadAllTimelines()).thenAnswer((_) async {
+      return;
+    });
+    await widgetKit.reloadAllTimelines();
   });
 
   test('reloadTimelines', () async {
-    MockWidgetKitPlatform fakePlatform = MockWidgetKitPlatform();
-    WidgetKitPlatform.instance = fakePlatform;
-
-    await WidgetKit.reloadTimelines('kind');
+    when(widgetKit.reloadTimelines('kind')).thenAnswer((_) async {
+      return;
+    });
+    await widgetKit.reloadTimelines('kind');
   });
 }

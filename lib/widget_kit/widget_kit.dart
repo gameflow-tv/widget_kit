@@ -1,11 +1,13 @@
-import 'platform_interface.dart';
+import 'package:widget_kit_plugin/api/widget_kit.dart';
 
 /// Surface level API for the WidgetKit plugin.
 class WidgetKit {
+  static final _instance = WidgetKitAPI();
+
   /// Reloads the timelines for all configured widgets belonging to the
   /// containing app.
   static Future<void> reloadAllTimelines() async {
-    return WidgetKitPlatform.instance.reloadAllTimelines();
+    return _instance.reloadAllTimelines();
   }
 
   /// Reloads the timelines for all widgets of a particular kind.
@@ -14,6 +16,6 @@ class WidgetKit {
   static Future<void> reloadTimelines(
     String kind,
   ) async {
-    return WidgetKitPlatform.instance.reloadTimelines(kind);
+    return _instance.reloadTimelines(kind);
   }
 }
