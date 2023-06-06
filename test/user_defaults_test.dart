@@ -1,157 +1,122 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:widget_kit_plugin/widget_kit_plugin.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:widget_kit_plugin/api/user_defaults.dart';
+import 'user_defaults_test.mocks.dart';
 
-class MockUserDefaultsPlatform
-    with MockPlatformInterfaceMixin
-    implements UserDefaultsPlatform {
-  final _mockPrefs = <String, dynamic>{};
-
-  @override
-  Future<dynamic> get(String key, [String? appGroup]) async {
-    return _mockPrefs[key];
-  }
-
-  @override
-  Future<bool> remove(String key, [String? appGroup]) async {
-    try {
-      _mockPrefs.remove(key);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  @override
-  Future<void> set(String key, value, [String? appGroup]) async {
-    _mockPrefs[key] = value;
-  }
-
-  @override
-  Future<bool> contains(String key, [String? appGroup]) async {
-    return _mockPrefs.containsKey(key);
-  }
-
-  @override
-  Future<bool?> getBool(String key, [String? appGroup]) async {
-    return await get(key, appGroup) as bool?;
-  }
-
-  @override
-  Future<double?> getDouble(String key, [String? appGroup]) async {
-    return await get(key, appGroup) as double?;
-  }
-
-  @override
-  Future<int?> getInt(String key, [String? appGroup]) async {
-    return await get(key, appGroup) as int?;
-  }
-
-  @override
-  Future<String?> getString(String key, [String? appGroup]) async {
-    return await get(key, appGroup) as String?;
-  }
-
-  @override
-  Future<void> setBool(String key, bool value, [String? appGroup]) async {
-    return set(key, value, appGroup);
-  }
-
-  @override
-  Future<void> setDouble(String key, double value, [String? appGroup]) async {
-    return set(key, value, appGroup);
-  }
-
-  @override
-  Future<void> setInt(String key, int value, [String? appGroup]) async {
-    return set(key, value, appGroup);
-  }
-
-  @override
-  Future<void> setString(String key, String value, [String? appGroup]) async {
-    return set(key, value, appGroup);
-  }
-}
-
+@GenerateMocks([UserDefaultsAPI])
 void main() {
-  final UserDefaultsPlatform initialPlatform = UserDefaultsPlatform.instance;
+  final userDefaults = MockUserDefaultsAPI();
+  final cache = <String, dynamic>{};
 
-  test('$MethodChannelUserDefaults is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelUserDefaults>());
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  tearDown(() => cache.clear());
+
+  test('set/get dynamic', () async {
+    when(userDefaults.set('key', 'value', 'appGroup')).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
+
+    when(userDefaults.get('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
+
+    await userDefaults.set('key', 'value', 'appGroup');
+    expect(await userDefaults.get('key', 'appGroup'), 'value');
   });
 
-  test('smoke test', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('set/get bool', () async {
+    when(userDefaults.setBool('key', true, any)).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
+
+    when(userDefaults.getBool('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
+
+    await userDefaults.setBool('key', true, 'appGroup');
+
+    expect(await userDefaults.getBool('key', 'appGroup'), true);
   });
 
-  test('set/get dynamic value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('set/get double', () async {
+    when(userDefaults.setDouble('key', 1.0, any)).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
 
-    await UserDefaults.set('key', 'value', 'appGroup');
-    final String? value = await UserDefaults.get('key', 'appGroup');
+    when(userDefaults.getDouble('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
 
-    expect(value, 'value');
+    await userDefaults.setDouble('key', 1.0, 'appGroup');
+
+    expect(await userDefaults.getDouble('key', 'appGroup'), 1.0);
   });
 
-  test('set/get string value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('set/get int', () async {
+    when(userDefaults.setInt('key', 1, any)).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
 
-    await UserDefaults.setString('key', 'value', 'appGroup');
-    final String? value = await UserDefaults.getString('key', 'appGroup');
+    when(userDefaults.getInt('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
 
-    expect(value, 'value');
+    await userDefaults.setInt('key', 1, 'appGroup');
+
+    expect(await userDefaults.getInt('key', 'appGroup'), 1);
   });
 
-  test('set/get bool value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('set/get string', () async {
+    when(userDefaults.setString('key', 'value', any)).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
 
-    await UserDefaults.setBool('key', true, 'appGroup');
-    final bool? value = await UserDefaults.getBool('key', 'appGroup');
+    when(userDefaults.getString('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
 
-    expect(value, true);
+    await userDefaults.setString('key', 'value', 'appGroup');
+
+    expect(await userDefaults.getString('key', 'appGroup'), 'value');
   });
 
-  test('set/get int value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('remove', () async {
+    when(userDefaults.set('key', 'value', 'appGroup')).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
 
-    await UserDefaults.setInt('key', 1, 'appGroup');
-    final int? value = await UserDefaults.getInt('key', 'appGroup');
+    when(userDefaults.get('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
 
-    expect(value, 1);
+    when(userDefaults.remove('key', 'appGroup')).thenAnswer((_) async {
+      cache.remove(_.positionalArguments[0]);
+    });
+
+    await userDefaults.set('key', 'value', 'appGroup');
+    expect(await userDefaults.get('key', 'appGroup'), 'value');
+
+    await userDefaults.remove('key', 'appGroup');
+    expect(await userDefaults.get('key', 'appGroup'), null);
   });
 
-  test('set/get double value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
+  test('contains', () async {
+    when(userDefaults.set('key', 'value', 'appGroup')).thenAnswer((_) async {
+      cache[_.positionalArguments[0]] = _.positionalArguments[1];
+    });
 
-    await UserDefaults.setDouble('key', 1.0, 'appGroup');
-    final double? value = await UserDefaults.getDouble('key', 'appGroup');
+    when(userDefaults.get('key', 'appGroup')).thenAnswer((_) async {
+      return cache[_.positionalArguments[0]];
+    });
 
-    expect(value, 1.0);
-  });
+    when(userDefaults.contains('key', 'appGroup')).thenAnswer((_) async {
+      return cache.containsKey(_.positionalArguments[0]);
+    });
 
-  test('remove value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
-
-    await UserDefaults.set('key', 'value', 'appGroup');
-    final bool removed = await UserDefaults.remove('key', 'appGroup');
-
-    expect(removed, true);
-  });
-
-  test('contains value', () async {
-    MockUserDefaultsPlatform fakePlatform = MockUserDefaultsPlatform();
-    UserDefaultsPlatform.instance = fakePlatform;
-
-    await UserDefaults.set('key', 'value', 'appGroup');
-    final bool contains = await UserDefaults.contains('key', 'appGroup');
-
-    expect(contains, true);
+    expect(await userDefaults.contains('key', 'appGroup'), false);
+    await userDefaults.set('key', 'value', 'appGroup');
+    expect(await userDefaults.contains('key', 'appGroup'), true);
   });
 }

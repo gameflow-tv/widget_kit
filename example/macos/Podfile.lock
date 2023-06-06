@@ -1,22 +1,22 @@
 PODS:
   - FlutterMacOS (1.0.0)
-  - widget_kit (0.0.1):
+  - widget_kit_plugin (0.0.1):
     - FlutterMacOS
 
 DEPENDENCIES:
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - widget_kit (from `Flutter/ephemeral/.symlinks/plugins/widget_kit/macos`)
+  - widget_kit_plugin (from `Flutter/ephemeral/.symlinks/plugins/widget_kit_plugin/macos`)
 
 EXTERNAL SOURCES:
   FlutterMacOS:
     :path: Flutter/ephemeral
-  widget_kit:
-    :path: Flutter/ephemeral/.symlinks/plugins/widget_kit/macos
+  widget_kit_plugin:
+    :path: Flutter/ephemeral/.symlinks/plugins/widget_kit_plugin/macos
 
 SPEC CHECKSUMS:
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
-  widget_kit: d64fea2e88cbf899b6612e271032de0a21579259
+  widget_kit_plugin: 9658611f1ba5faaaa9e8221d94fce53733a6911c
 
-PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+PODFILE CHECKSUM: c2e95c8c0fe03c5c57e438583cae4cc732296009
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

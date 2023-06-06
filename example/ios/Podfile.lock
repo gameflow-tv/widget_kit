@@ -2,27 +2,27 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
-  - widget_kit (0.0.1):
+  - widget_kit_plugin (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - widget_kit (from `.symlinks/plugins/widget_kit/ios`)
+  - widget_kit_plugin (from `.symlinks/plugins/widget_kit_plugin/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  widget_kit:
-    :path: ".symlinks/plugins/widget_kit/ios"
+  widget_kit_plugin:
+    :path: ".symlinks/plugins/widget_kit_plugin/ios"
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  integration_test: a1e7d09bd98eca2fc37aefd79d4f41ad37bdbbe5
-  widget_kit: 50d168671a508d07b2e5909c6eb77b5b72a4847e
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+  widget_kit_plugin: a245a5248f0cd2bde580285ebe6bee5c6f1f6ce1
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

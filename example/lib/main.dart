@@ -36,17 +36,18 @@ class _MyAppState extends State<MyApp> {
         'ExampleData',
         'group.tv.gameflow',
       )) {
-        await UserDefaults.set(
+        await UserDefaults.setString(
           'ExampleData',
           jsonEncode(ExampleData('Hello, world!').toJson()),
           'group.tv.gameflow',
         );
       }
 
-      value = await UserDefaults.get(
-        'ExampleData',
-        'group.tv.gameflow',
-      );
+      value = await UserDefaults.getString(
+            'ExampleData',
+            'group.tv.gameflow',
+          ) ??
+          'N/A';
 
       setState(() {
         _value = value;
@@ -86,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                     label: Text('Enter a value:'),
                   ),
                   onChanged: (value) async {
-                    await UserDefaults.set(
+                    await UserDefaults.setString(
                       'ExampleData',
                       jsonEncode(ExampleData(value).toJson()),
                       'group.tv.gameflow',

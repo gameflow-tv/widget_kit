@@ -16,7 +16,7 @@ void main() {
   testWidgets('setItem test', (WidgetTester tester) async {
     await UserDefaults.set('key', 'value', 'appGroup');
 
-    final String? value = await UserDefaults.get('key', 'appGroup');
+    final String? value = await UserDefaults.getString('key', 'appGroup');
 
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.

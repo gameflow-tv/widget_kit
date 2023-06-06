@@ -1,45 +1,47 @@
-import 'platform_interface.dart';
+import 'package:widget_kit_plugin/api/user_defaults.dart';
 
 /// Surface level API for the user defaults plugin.
 class UserDefaults {
+  static final _instance = UserDefaultsAPI();
+
   /// Sets the app group to use for the user defaults.
-  static set appGroup(String? appGroup) {
-    UserDefaultsPlatform.appGroup = appGroup;
+  static set appGroup(String appGroup) {
+    _instance.setAppGroup(appGroup);
   }
 
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
-  static Future<dynamic> get(String key, [String? appGroup]) async {
-    return UserDefaultsPlatform.instance.get(key, appGroup);
+  static Future<Object?> get(String key, [String? appGroup]) async {
+    return _instance.get(key, appGroup);
   }
 
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
   static Future<String?> getString(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.getString(key, appGroup);
+    return _instance.getString(key, appGroup);
   }
 
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
   static Future<bool?> getBool(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.getBool(key, appGroup);
+    return _instance.getBool(key, appGroup);
   }
 
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
   static Future<int?> getInt(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.getInt(key, appGroup);
+    return _instance.getInt(key, appGroup);
   }
 
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
   static Future<double?> getDouble(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.getDouble(key, appGroup);
+    return _instance.getDouble(key, appGroup);
   }
 
   /// Stores [value] in the user defaults key-value store.
   static Future<void> set(String key, dynamic value, String appGroup) async {
-    return UserDefaultsPlatform.instance.set(key, value, appGroup);
+    return _instance.set(key, value, appGroup);
   }
 
   /// Stores [value] in the user defaults key-value store.
@@ -48,7 +50,7 @@ class UserDefaults {
     String value,
     String appGroup,
   ) async {
-    return UserDefaultsPlatform.instance.setString(key, value, appGroup);
+    return _instance.setString(key, value, appGroup);
   }
 
   /// Stores [value] in the user defaults key-value store.
@@ -57,7 +59,7 @@ class UserDefaults {
     bool value,
     String appGroup,
   ) async {
-    return UserDefaultsPlatform.instance.setBool(key, value, appGroup);
+    return _instance.setBool(key, value, appGroup);
   }
 
   /// Stores [value] in the user defaults key-value store.
@@ -66,7 +68,7 @@ class UserDefaults {
     int value,
     String appGroup,
   ) async {
-    return UserDefaultsPlatform.instance.setInt(key, value, appGroup);
+    return _instance.setInt(key, value, appGroup);
   }
 
   /// Stores [value] in the user defaults key-value store.
@@ -75,16 +77,16 @@ class UserDefaults {
     double value,
     String appGroup,
   ) async {
-    return UserDefaultsPlatform.instance.setDouble(key, value, appGroup);
+    return _instance.setDouble(key, value, appGroup);
   }
 
   /// Removes the value associated with [key] from the user defaults
-  static Future<bool> remove(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.remove(key, appGroup);
+  static Future<void> remove(String key, String appGroup) async {
+    return _instance.remove(key, appGroup);
   }
 
   /// Returns `true` if the user defaults contains a value associated with [key].
   static Future<bool> contains(String key, String appGroup) async {
-    return UserDefaultsPlatform.instance.contains(key, appGroup);
+    return _instance.contains(key, appGroup);
   }
 }
