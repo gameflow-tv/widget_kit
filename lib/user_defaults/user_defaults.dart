@@ -2,9 +2,14 @@ import 'platform_interface.dart';
 
 /// Surface level API for the user defaults plugin.
 class UserDefaults {
+  /// Sets the app group to use for the user defaults.
+  static set appGroup(String? appGroup) {
+    UserDefaultsPlatform.appGroup = appGroup;
+  }
+
   /// Returns the value associated with [key] or `null` if no value is
   /// associated with [key].
-  static Future<dynamic> get(String key, String appGroup) async {
+  static Future<dynamic> get(String key, [String? appGroup]) async {
     return UserDefaultsPlatform.instance.get(key, appGroup);
   }
 

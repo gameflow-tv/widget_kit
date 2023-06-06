@@ -8,12 +8,12 @@ class MockUserDefaultsPlatform
   final _mockPrefs = <String, dynamic>{};
 
   @override
-  Future<dynamic> get(String key, String appGroup) async {
+  Future<dynamic> get(String key, [String? appGroup]) async {
     return _mockPrefs[key];
   }
 
   @override
-  Future<bool> remove(String key, String appGroup) async {
+  Future<bool> remove(String key, [String? appGroup]) async {
     try {
       _mockPrefs.remove(key);
       return true;
@@ -23,52 +23,52 @@ class MockUserDefaultsPlatform
   }
 
   @override
-  Future<void> set(String key, value, String appGroup) async {
+  Future<void> set(String key, value, [String? appGroup]) async {
     _mockPrefs[key] = value;
   }
 
   @override
-  Future<bool> contains(String key, String appGroup) async {
+  Future<bool> contains(String key, [String? appGroup]) async {
     return _mockPrefs.containsKey(key);
   }
 
   @override
-  Future<bool?> getBool(String key, String appGroup) async {
+  Future<bool?> getBool(String key, [String? appGroup]) async {
     return await get(key, appGroup) as bool?;
   }
 
   @override
-  Future<double?> getDouble(String key, String appGroup) async {
+  Future<double?> getDouble(String key, [String? appGroup]) async {
     return await get(key, appGroup) as double?;
   }
 
   @override
-  Future<int?> getInt(String key, String appGroup) async {
+  Future<int?> getInt(String key, [String? appGroup]) async {
     return await get(key, appGroup) as int?;
   }
 
   @override
-  Future<String?> getString(String key, String appGroup) async {
+  Future<String?> getString(String key, [String? appGroup]) async {
     return await get(key, appGroup) as String?;
   }
 
   @override
-  Future<void> setBool(String key, bool value, String appGroup) async {
+  Future<void> setBool(String key, bool value, [String? appGroup]) async {
     return set(key, value, appGroup);
   }
 
   @override
-  Future<void> setDouble(String key, double value, String appGroup) async {
+  Future<void> setDouble(String key, double value, [String? appGroup]) async {
     return set(key, value, appGroup);
   }
 
   @override
-  Future<void> setInt(String key, int value, String appGroup) async {
+  Future<void> setInt(String key, int value, [String? appGroup]) async {
     return set(key, value, appGroup);
   }
 
   @override
-  Future<void> setString(String key, String value, String appGroup) async {
+  Future<void> setString(String key, String value, [String? appGroup]) async {
     return set(key, value, appGroup);
   }
 }

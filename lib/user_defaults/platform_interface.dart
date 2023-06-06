@@ -23,43 +23,50 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// The app group used to share data between the app and its extensions.
+  /// If this isn't set, the app group will need to be provided when calling
+  /// each method.
+  static set appGroup(String? appGroup) {
+    _instance = MethodChannelUserDefaults(appGroup);
+  }
+
   /// Retrieves the value associated with [key] from the user defaults.
   Future<dynamic> get(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('get() has not been implemented.');
   }
 
   /// Retrieves the value associated with [key] from the user defaults.
   Future<bool?> getBool(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('getBool() has not been implemented.');
   }
 
   /// Retrieves the value associated with [key] from the user defaults.
   Future<int?> getInt(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('getInt() has not been implemented.');
   }
 
   /// Retrieves the value associated with [key] from the user defaults.
   Future<double?> getDouble(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('getDouble() has not been implemented.');
   }
 
   /// Retrieves the value associated with [key] from the user defaults.
   Future<String?> getString(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('getString() has not been implemented.');
   }
 
@@ -67,9 +74,9 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
   /// with [key].
   Future<void> set(
     String key,
-    dynamic value,
-    String appGroup,
-  ) async {
+    dynamic value, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('setItem() has not been implemented.');
   }
 
@@ -77,9 +84,9 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
   /// with [key].
   Future<void> setBool(
     String key,
-    bool value,
-    String appGroup,
-  ) async {
+    bool value, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('setBool() has not been implemented.');
   }
 
@@ -87,9 +94,9 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
   /// with [key].
   Future<void> setInt(
     String key,
-    int value,
-    String appGroup,
-  ) async {
+    int value, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('setInt() has not been implemented.');
   }
 
@@ -97,9 +104,9 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
   /// with [key].
   Future<void> setDouble(
     String key,
-    double value,
-    String appGroup,
-  ) async {
+    double value, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('setDouble() has not been implemented.');
   }
 
@@ -107,25 +114,25 @@ abstract class UserDefaultsPlatform extends PlatformInterface {
   /// with [key].
   Future<void> setString(
     String key,
-    String value,
-    String appGroup,
-  ) async {
+    String value, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('setString() has not been implemented.');
   }
 
   /// Removes the value associated with [key] from the user defaults.
   Future<bool> remove(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('removeItem() has not been implemented.');
   }
 
   /// Returns true if the key is present, false otherwise.
   Future<bool> contains(
-    String key,
-    String appGroup,
-  ) async {
+    String key, [
+    String? appGroup,
+  ]) async {
     throw UnimplementedError('contains() has not been implemented.');
   }
 }
