@@ -14,8 +14,10 @@ Pod::Spec.new do |s|
   s.author = { 'Arne Molland' => 'arne@gameflow.tv' }
   s.source = { :path => '.' }
   s.source_files = 'Classes/**/*'
-  s.dependency 'Flutter'
-  s.platform = :ios, '14.0'
+  s.ios.dependency 'Flutter'
+  s.osx.dependency 'FlutterMacOS'
+  s.ios.platform = :ios, '14.0'
+  s.osx.platform = :osx, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

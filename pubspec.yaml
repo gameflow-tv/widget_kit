@@ -23,5 +23,7 @@ flutter:
     platforms:
       ios:
         pluginClass: WidgetKitPlugin
+        sharedDarwinSource: true
       macos:
         pluginClass: WidgetKitPlugin
+        sharedDarwinSource: true
