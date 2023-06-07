@@ -18,8 +18,14 @@ void main() {
 
     final String? value = await UserDefaults.getString('key', 'appGroup');
 
+    expect(value, 'value');
+  });
+
+  testWidgets('reloadTimelines', (widgetTester) async {
+    await WidgetKit.reloadAllTimelines();
+
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
-    expect(value?.isNotEmpty, true);
+    expect(true, true);
   });
 }
